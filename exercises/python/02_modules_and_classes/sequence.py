@@ -1,3 +1,11 @@
+import this
+import antigravity
+lis = ["sole", "acqua", "sale", "mare"]
+
+lis.sort(key= lambda x: x[::-1])
+print(lis)
+
+
 import copy
 class Sequence():
     def __init__(self, components):
