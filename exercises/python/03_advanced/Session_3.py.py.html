@@ -1,0 +1,98 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+#Exercise 1
+#implement `myrange` that acts like `range`
+#define a function `myrange`
+#efine a class `MyRange`
+
+#classe MyRange
+
+class MyRange():
+    def __init__(self,partenza,fine,step=1):
+        self.fine = fine
+        self.step = step
+        self.index= partenza - step
+        if (self.step == 0):
+            raise TypeError("lo step non può essere nullo")
+        if (self.index > self.fine and self.step > 0):
+            raise TypeError("lo step in questa situazione non può essere negativo")
+        
+            
+            
+        
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if self.step > 0:
+            if self.index >= self.fine:
+                raise StopIteration
+            self.index = self.index + self.step
+            if self.index >= self.fine:
+                raise StopIteration    
+            return self.index
+        else:
+            if self.index <= self.fine:
+                raise StopIteration
+            self.index = self.index + self.step
+            if self.index <= self.fine:
+                raise StopIteration    
+            return self.index
+    
+
+
+    
+
+#funzione che utilizza classe MyRange
+def myrange(*arg):
+    length = len(arg)
+    if length not in [1,2,3]:  #se il numero di argomenti passati in input non è giusto
+        raise TypeError(str(length)+ ": numero di argomenti non adeguato")
+    #ora casi che dipensono dal numero di variabili
+    if length == 1:  #c'è solo la fine
+        return MyRange(0,arg[0])
+    elif length == 2:
+        return MyRange(arg[0],arg[1])
+    elif length == 3:
+        return MyRange(arg[0],arg[1],arg[2])
+    
+
+
+# In[2]:
+
+
+####################################### EXERCISE 2 ########################################################
+                    #Implement a Timer that exploiting `__enter__` and `__exit__` is able to measure
+                                    #the time spent in a portion of python code.
+
+import time
+
+class Timer:
+    def __enter__(self):
+        print("inizio del calcolo")
+        import time 
+        self.start = time.monotonic()
+    
+    def __exit__(self,*args):     
+        import time
+        self.end = time.monotonic()
+        tempo_passato = self.end - self.start
+        print(tempo_passato)
+        print("fine del calcolo del tempo")
+        
+with Timer() as t:
+
+    for i in range(1,400000):
+        i**2
+        
+ 
+
+
+# In[ ]:
+
+
+
+
