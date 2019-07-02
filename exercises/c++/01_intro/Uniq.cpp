@@ -2,6 +2,7 @@
 //  Uniq.cpp
 //
 #include <iostream>
+#include <string>
 
 int main() {
     std::cout << "insert a text:\n";
