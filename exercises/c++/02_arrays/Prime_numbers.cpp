@@ -10,8 +10,8 @@ int main() {
     
     for (unsigned int i{3}; i<100; i=i+2){
         for (auto j=0u; j<=prime_num.size(); ++j){
-            unsigned int* p=&prime_num[j];
-            if(i%*p!=0){
+            unsigned int p=prime_num[j];
+            if(i%p!=0){
                 if(j==prime_num.size()-1){
                     prime_num.push_back(i);
                 }
@@ -21,7 +21,7 @@ int main() {
             }
         }
     }
-    for (const auto& x : prime_num)
+    for (const auto x : prime_num)
         std::cout << x << " ";
     std::cout<<std::endl;
 }
