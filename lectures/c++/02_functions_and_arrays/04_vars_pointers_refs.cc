@@ -16,6 +16,11 @@ int main() {
   std::cout << &**ptr << std::endl << std::endl;//non é corretto
 
   std::cout << "address of\t   d: " << &d << std::endl;//0x7fff08943dd8
+  std::cout << "address of\t   d: " << *&d << std::endl;//9.9
+  std::cout << "address of\t   d: " << &*d << std::endl;//non é corretto
+  std::cout << "address of\t   d: " << &*&ref << std::endl;//0x7fff08943dd8
+  std::cout << "address of\t   d: " << *&ref << std::endl;//9.9
+  std::cout << "address of\t   d: " << &*ref << std::endl;//non é corretto
   std::cout << "address of\t ref: " << &ref << std::endl;//0x7fff08943dd8
   std::cout << "address of\t ptr: " << &ptr << std::endl << std::endl;//0x7fff08943de0
  
