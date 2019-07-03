@@ -20,6 +20,11 @@ int main() {
   std::cout << "after funzione void swap\t" << &x << " " << &y <<std::endl;//0x7ec 0x7f0
   
   std::cout << "after funzioni di swap con return\t" << x << " " << y << std::endl;//3 7
+  //osservo che é avvenuto lo swap
+  swapa(x,y);
+  swapb(x,y);
+  std::cout << "dopo aver chiamato le funzioni di swap con return\t" << x << " " << y << std::endl;//7 3
+  //noto che anche in questo caso non modifico il valore di x e y
   return 0;
 }
 
@@ -28,6 +33,7 @@ void swap(int a, int b) {
   a = b;
   b = t;
   std::cout << "nella funzione\t" << a << " " << b << " " << t <<std::endl;//3 7 7
+  //nella funzione avviene lo swap
 }
 
 void swapx(int a, int b) {
