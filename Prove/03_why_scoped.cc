@@ -34,7 +34,7 @@ int main() {
   array < string,12> mesi{"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
   cout << &mesi[int(month::nov)]<<endl;
   cout << static_cast<int>(month::dec) <<endl;
-  cout << &mesiprint[int(month::jan)-1]<<endl;//mesi sballati di 1
+  cout << &mesiprint[int(month::jan)-1]<<endl;
   
   return 0;
 }
