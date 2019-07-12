@@ -2,7 +2,6 @@
 
 struct X {
   char member;
-  public:
   explicit X(char s): member(s) {}
   //int f;
 };
