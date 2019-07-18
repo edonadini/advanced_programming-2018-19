@@ -5,15 +5,14 @@
 template <typename T>
 class Vector{
   T i;
-  std::shared_ptr<T[]> p;
+  std::unique_ptr<T[]> p;
   public:
-  explicit Vector(const std::size_t l): i(l), p(new T[i]{}) {}
+  explicit Vector(const std::size_t l): i{l}, p{new T[i]{}} {}
   Vector() {} //default constructor
-  //~Vector() noexcept {delete() p} non e' necessario perche' unique pointer
   ~Vector() noexcept =default;
 
   //copy constructor
-  Vector(const Vector& v);
+  Vector(const Vector& v): i(v.i), p(v.p) {std::copy(v.begin(),v.end(),p.get())}
 
   //copy assignment
   Vector& operator=(const Vector& v);
@@ -42,18 +41,12 @@ class Vector{
   T* end() noexcept { return p.get() + i; }
 };
 
-
-//copy constructor
-template <typename T>
-Vector<T>::Vector(const Vector& v): i(v.i), p(new T[i]) {std::copy(v.begin(),v.end(),begin());}
-
 //copy assignment
 template<typename T>
 Vector<T>& Vector<T>::operator=(const Vector& v){
   std::shared_ptr<T[]> q{new T[v.i]};
   std::copy(v.begin(),v.end(),q.get());
   p.reset();
-  p=nullptr; //necessario?
   p=q;
   i=v.i;
   return *this;
